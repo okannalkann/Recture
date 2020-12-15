@@ -6,7 +6,7 @@ from database import Database
 
 app = Flask(__name__)
 app.secret_key = "SportBuddy"
-db = Database("127.0.0.1", 3306, "root", "qwerty123456", "dne")
+db = Database("127.0.0.1", 3306, "root", "qwerty123456", "rectureDB")
 db.con.cursor()    
 
 
@@ -14,7 +14,7 @@ db.con.cursor()
 @app.route('/',methods=['GET','POST'])
 def deneme():
     if request.method == "GET":
-        # query="SELECT * FROM dne.user WHERE username= 'alkano'"
+        # query="SELECT * FROM rectureDB.user WHERE username= 'alkano'"
         # db.cursor.execute(query)
         # myresult = db.cursor.fetchone()
         # print(myresult)
@@ -32,11 +32,11 @@ def sign_up():
             password = request.form["password"]
             email = request.form["email"]
             imageURL = request.form["imageURL"]
-            query="INSERT INTO dne.user (name, surname, username, userType, password, email,ImageUrl) VALUES (%s,%s,%s,%s,%s,%s,%s)"
+            query="INSERT INTO rectureDB.user (name, surname, username, userType, password, email,ImageUrl) VALUES (%s,%s,%s,%s,%s,%s,%s)"
             val = (name,surname,username,"nonPremium",password,email,imageURL)
             db.cursor.execute(query, val) #added the database
             db.con.commit()
-            query="SELECT * FROM dne.user WHERE username= '"+username+"'"
+            query="SELECT * FROM rectureDB.user WHERE username= '"+username+"'"
             db.cursor.execute(query)
             myresult = db.cursor.fetchone()
             print(myresult)
@@ -50,10 +50,10 @@ def sign_in():
             usern = request.form["username"] #take username from website textbox
             password = request.form["password"] #take password from website textbox
             print(usern,password)
-            # query="SELECT * FROM dne.user WHERE (username = "'%s'" and password="'%s'")",(usern,password)
-            query="SELECT * FROM dne.user WHERE username =\"" + usern + "\""
+            # query="SELECT * FROM rectureDB.user WHERE (username = "'%s'" and password="'%s'")",(usern,password)
+            query="SELECT * FROM rectureDB.user WHERE username =\"" + usern + "\""
 
-            # query="""SELECT * FROM dne.user WHERE (username = "balkani" and password= 123)"""
+            # query="""SELECT * FROM rectureDB.user WHERE (username = "balkani" and password= 123)"""
             print(query)
             db.cursor.execute(query)
             print("alsdlasdlasl")
