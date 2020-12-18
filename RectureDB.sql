@@ -104,6 +104,7 @@ CREATE TABLE IF NOT EXISTS `rectureDB`.`MessageForPanel` (
   `ReportNum` INT NOT NULL DEFAULT 0,
   `Imageurl` VARCHAR(120) NULL,
   `Date` DATETIME NULL,
+  `messages` LONGTEXT NOT NULL,
   PRIMARY KEY (`idMessageForPanel`),
   UNIQUE INDEX `idMessageForPanel_UNIQUE` (`idMessageForPanel` ASC) VISIBLE,
   INDEX `fk_MessageForPanel_User1_idx` (`User_idUser` ASC) VISIBLE,
@@ -255,7 +256,7 @@ CREATE TABLE IF NOT EXISTS `rectureDB`.`application` (
   `idapplication` INT NOT NULL AUTO_INCREMENT,
   `cv` LONGTEXT NOT NULL,
   `Description` LONGTEXT NOT NULL,
-  `IsApproved` INT NOT NULL DEFAULT 0,
+  `IsApproved` INT NULL,
   `name` VARCHAR(45) NOT NULL,
   `username` VARCHAR(45) NOT NULL,
   `surname` VARCHAR(45) NOT NULL,
@@ -273,14 +274,17 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `rectureDB`.`Contact` (
   `idContact` INT NOT NULL AUTO_INCREMENT,
   `Message` LONGTEXT NOT NULL,
+  `name` VARCHAR(45) NULL,
+  `email` VARCHAR(100) NULL,
+  `message` LONGTEXT NULL,
   `messageType` VARCHAR(45) NOT NULL,
-  `User_idUser` INT NOT NULL,
-  PRIMARY KEY (`idContact`, `User_idUser`),
+  `Date` DATETIME NULL,
+  PRIMARY KEY (`idContact`),
   UNIQUE INDEX `idContact_UNIQUE` (`idContact` ASC) VISIBLE,
-  INDEX `fk_Contact_User1_idx` (`User_idUser` ASC) VISIBLE,
-  UNIQUE INDEX `User_idUser_UNIQUE` (`User_idUser` ASC) VISIBLE,
+  INDEX `fk_Contact_User1_idx` (`name` ASC) VISIBLE,
+  UNIQUE INDEX `User_idUser_UNIQUE` (`name` ASC) VISIBLE,
   CONSTRAINT `fk_Contact_User1`
-    FOREIGN KEY (`User_idUser`)
+    FOREIGN KEY (`name`)
     REFERENCES `rectureDB`.`User` (`idUser`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
