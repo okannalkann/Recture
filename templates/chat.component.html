@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% if messages%}
+        {% for i in range(0, len) %}
+            
+            {{ username}} :  {{ messages[i][4]}} -
+
+            {{ messages[i][5]}}
+            <br>
+        
+        {% endfor %}
+    {% endif%}
+    <form action="/chat" method="POST">
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Message</label>
+        <input type="text" class="form-control"  name="message" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <input type="submit" class="btn btn-primary" name="send_message" value="Send"/>
+    </form>
+</body>
+</html>

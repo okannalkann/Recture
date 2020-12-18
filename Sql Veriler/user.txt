@@ -1,0 +1,3 @@
+INSERT INTO `recturedb`.`user` (`idUser`, `name`, `surname`, `username`, `userType`, `password`, `email`, `ImageUrl`) VALUES ('1', 'okan', 'alkan', 'alkano', 'nonPremium', '123', 'okan@gmail.com', '123');
+INSERT INTO `recturedb`.`user` (`idUser`, `name`, `surname`, `username`, `userType`, `password`, `email`, `ImageUrl`) VALUES ('2', 'ilgin', 'balkan', 'balkani', 'admin', '123', 'balkani17@itu.edu.tr', '123');
+INSERT INTO `recturedb`.`user` (`idUser`, `name`, `surname`, `username`, `userType`, `password`, `email`, `ImageUrl`) VALUES ('3', 'Kaan', 'İrtegün', 'kaan17', 'nonPremium', '123', 'irtegun16@itu.edu.tr', 'kaan');
